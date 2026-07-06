@@ -1,0 +1,16 @@
+{
+  "rulesets": {
+    "r.ruleset": [
+      "signal GrantRoot(who)",
+      "rule R { emit GrantRoot(\"me\") }"
+    ]
+  },
+  "cases": [
+    {
+      "name": "signal with no host handler is ignored",
+      "input": {},
+      "flags": ["--default", "allow"],
+      "want": { "verdict": "ALLOW", "stdoutContains": ["unhandled"] }
+    }
+  ]
+}

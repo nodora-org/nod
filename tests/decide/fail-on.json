@@ -1,0 +1,19 @@
+{
+  "rulesets": {
+    "r.ruleset": [
+      "signal Deny(reason)",
+      "signal Ask(reason)",
+      "rule R {",
+      "    emit Deny(\"d\") when input.deny == true",
+      "    emit Ask(\"k\") when input.ask == true",
+      "}"
+    ]
+  },
+  "cases": [
+    { "name": "fail-on deny, denied -> exit 1", "input": { "deny": true }, "flags": ["--fail-on", "deny"], "want": { "verdict": "DENY", "exit": 1 } },
+    { "name": "fail-on deny, asked -> exit 0", "input": { "ask": true }, "flags": ["--fail-on", "deny"], "want": { "verdict": "ASK", "exit": 0 } },
+    { "name": "fail-on ask, asked -> exit 1", "input": { "ask": true }, "flags": ["--fail-on", "ask"], "want": { "verdict": "ASK", "exit": 1 } },
+    { "name": "fail-on deny, allowed -> exit 0", "input": {}, "flags": ["--fail-on", "deny", "--default", "allow"], "want": { "verdict": "ALLOW", "exit": 0 } },
+    { "name": "invalid fail-on value errors", "input": {}, "flags": ["--fail-on", "maybe"], "want": { "exit": 1, "stderrContains": ["--fail-on must be"] } }
+  ]
+}

@@ -1,0 +1,11 @@
+signal Allow(reason)
+signal Log(message)
+
+const READ_ONLY = ["read", "grep", "glob", "ls", "list"]
+
+rule ReadOnly {
+    is_read_only = input.tool in READ_ONLY
+
+    emit Allow("read-only tool") when is_read_only
+    emit Log("run tool=" + input.tool)
+}

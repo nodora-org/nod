@@ -1,0 +1,21 @@
+signal Deny(reason)
+signal Ask(reason)
+
+rule ForcePush {
+    is_bash = input.tool == "bash"
+    cmd     = input.cmd
+
+    force_push  = strings::contains(cmd, "push --force") || strings::contains(cmd, "push -f")
+
+    emit Ask("force push rewrites history") when is_bash && force_push
+}
+
+rule CurlPipe {
+    is_bash = input.tool == "bash"
+    cmd     = input.cmd
+
+    pipe_to_sh  = strings::contains(cmd, "| sh") || strings::contains(cmd, "| bash")
+    curl_pipe   = strings::contains(cmd, "curl") && pipe_to_sh
+
+    emit Deny("remote code execution: download piped to a shell") when is_bash && curl_pipe
+}

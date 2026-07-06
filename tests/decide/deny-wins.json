@@ -1,0 +1,22 @@
+{
+  "rulesets": {
+    "r.ruleset": [
+      "signal Allow(reason)",
+      "signal Deny(reason)",
+      "signal Ask(reason)",
+      "rule R {",
+      "    emit Allow(\"a\") when input.allow == true",
+      "    emit Deny(\"d\") when input.deny == true",
+      "    emit Ask(\"k\") when input.ask == true",
+      "}"
+    ]
+  },
+  "cases": [
+    { "name": "allow", "input": { "allow": true }, "want": { "verdict": "ALLOW" } },
+    { "name": "ask", "input": { "ask": true }, "want": { "verdict": "ASK" } },
+    { "name": "deny", "input": { "deny": true }, "want": { "verdict": "DENY" } },
+    { "name": "allow+deny wins deny", "input": { "allow": true, "deny": true }, "want": { "verdict": "DENY" } },
+    { "name": "allow+ask wins ask", "input": { "allow": true, "ask": true }, "want": { "verdict": "ASK" } },
+    { "name": "ask+deny wins deny", "input": { "ask": true, "deny": true }, "want": { "verdict": "DENY" } }
+  ]
+}

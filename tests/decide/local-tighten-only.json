@@ -1,0 +1,29 @@
+{
+  "rulesets": {
+    "base.ruleset": ["signal Log(message)", "rule B { emit Log(\"seen\") }"]
+  },
+  "localRulesets": {
+    "local.ruleset": [
+      "signal Allow(reason)",
+      "signal Deny(reason)",
+      "rule R {",
+      "    emit Allow(\"a\") when input.allow == true",
+      "    emit Deny(\"d\") when input.deny == true",
+      "}"
+    ]
+  },
+  "cases": [
+    {
+      "name": "local Allow is suppressed, falls to default deny",
+      "input": { "allow": true },
+      "want": { "verdict": "DENY", "stdoutContains": ["suppressed"] }
+    },
+    { "name": "local Deny is honored", "input": { "deny": true }, "want": { "verdict": "DENY" } },
+    {
+      "name": "trust lets the local Allow count",
+      "input": { "allow": true },
+      "flags": ["--trust"],
+      "want": { "verdict": "ALLOW" }
+    }
+  ]
+}

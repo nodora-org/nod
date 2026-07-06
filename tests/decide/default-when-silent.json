@@ -1,0 +1,13 @@
+{
+  "rulesets": {
+    "r.ruleset": [
+      "signal Deny(reason)",
+      "rule R { emit Deny(\"x\") when input.bad == true }"
+    ]
+  },
+  "cases": [
+    { "name": "default deny", "input": {}, "flags": ["--default", "deny"], "want": { "verdict": "DENY" } },
+    { "name": "default allow", "input": {}, "flags": ["--default", "allow"], "want": { "verdict": "ALLOW" } },
+    { "name": "default ask", "input": {}, "flags": ["--default", "ask"], "want": { "verdict": "ASK" } }
+  ]
+}

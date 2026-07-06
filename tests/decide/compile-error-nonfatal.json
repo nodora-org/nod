@@ -1,0 +1,16 @@
+{
+  "rulesets": {
+    "good.ruleset": [
+      "signal Deny(reason)",
+      "rule R { emit Deny(\"d\") when input.deny == true }"
+    ],
+    "bad.ruleset": ["not valid nodora"]
+  },
+  "cases": [
+    {
+      "name": "a broken file is skipped, the rest still decide",
+      "input": { "deny": true },
+      "want": { "verdict": "DENY", "exit": 0, "stderrContains": ["bad.ruleset"] }
+    }
+  ]
+}

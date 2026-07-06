@@ -1,0 +1,16 @@
+{
+  "rulesets": {
+    "r.ruleset": [
+      "signal Log(message)",
+      "signal Deny(reason)",
+      "rule R {",
+      "    emit Log(\"hi\")",
+      "    emit Deny(\"d\") when input.deny == true",
+      "}"
+    ]
+  },
+  "cases": [
+    { "name": "log alone does not decide", "input": {}, "flags": ["--default", "allow"], "want": { "verdict": "ALLOW" } },
+    { "name": "deny still fires", "input": { "deny": true }, "want": { "verdict": "DENY" } }
+  ]
+}

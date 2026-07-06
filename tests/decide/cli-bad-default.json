@@ -1,0 +1,13 @@
+{
+  "rulesets": {
+    "r.ruleset": ["signal Deny(reason)", "rule R { emit Deny(\"x\") when input.bad == true }"]
+  },
+  "cases": [
+    {
+      "name": "an invalid --default exits non-zero",
+      "input": {},
+      "flags": ["--default", "nope"],
+      "want": { "exit": 1, "stderrContains": ["--default must be"] }
+    }
+  ]
+}

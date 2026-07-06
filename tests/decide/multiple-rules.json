@@ -1,0 +1,20 @@
+{
+  "rulesets": {
+    "multi.ruleset": [
+      "signal Deny(reason)",
+      "signal Ask(reason)",
+      "rule AskRule { emit Ask(\"a\") when input.x == true }",
+      "rule Block   { emit Deny(\"b\") when input.x == true }"
+    ]
+  },
+  "cases": [
+    {
+      "name": "both rules fire, provenance names each",
+      "input": { "x": true },
+      "want": {
+        "verdict": "DENY",
+        "stdoutContains": ["multi.ruleset:AskRule", "multi.ruleset:Block"]
+      }
+    }
+  ]
+}
