@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"nod/governor"
+	"nodora.org/nod/governor"
 
 	"nodora.org/nodora/pkg/core"
 )

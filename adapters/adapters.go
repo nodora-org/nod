@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	"nod/governor"
+	"nodora.org/nod/governor"
 
 	"nodora.org/nodora/pkg/core"
 )

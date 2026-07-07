@@ -1,4 +1,4 @@
-module nod
+module nodora.org/nod
 
 go 1.24.12
 

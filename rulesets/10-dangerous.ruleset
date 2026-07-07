@@ -5,9 +5,10 @@ rule ForcePush {
     is_bash = input.tool == "bash"
     cmd     = input.cmd
 
-    force_push  = strings::contains(cmd, "push --force") || strings::contains(cmd, "push -f")
+    git_push = strings::contains(cmd, "git push")
+    force    = strings::contains(cmd, "-f")
 
-    emit Ask("force push rewrites history") when is_bash && force_push
+    emit Ask("force push rewrites history") when is_bash && git_push && force_push
 }
 
 rule CurlPipe {

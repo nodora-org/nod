@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"nod/governor"
+	"nodora.org/nod/governor"
 )
 
 func runDecide(c common) error {

@@ -7,8 +7,8 @@ import (
 
 	"github.com/urfave/cli/v3"
 
-	"nod/adapters"
-	"nod/governor"
+	"nodora.org/nod/adapters"
+	"nodora.org/nod/governor"
 )
 
 func main() {

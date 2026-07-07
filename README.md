@@ -4,7 +4,7 @@
 ![GitHub License](https://img.shields.io/github/license/nodora-org/nod)
 ![GitHub Tag](https://img.shields.io/github/v/tag/nodora-org/nod)
 
-nod is a governor. You give it a proposed action as JSON and a policy written as
+**nod** is an agent governor. You give it a proposed action as JSON and a policy written as
 rules; it answers `allow`, `ask`, or `deny`, and shows which rule decided and
 why. The rules are pure functions from input to verdict, so nothing ties them to
 a specific domain.
@@ -29,6 +29,12 @@ Policy comes from two places, and both are just directories of `.ruleset` files:
   tighten the policy but not loosen it (see [Local policy](#local-policy-a-nod-folder)).
 
 ## Install
+
+```sh
+go install nodora.org/nod@latest
+```
+
+Or build from source:
 
 ```sh
 go build -o nod .
@@ -224,3 +230,7 @@ type-checked when they compile, sandboxed at runtime, and limited to the fixed
 signal vocabulary, which keeps rule-authoring cheap and safe to automate later.
 But a component that has an agent propose, validate, and adopt new rules is not
 included here.
+
+## License
+
+Licensed under the [Apache License 2.0](./LICENSE).

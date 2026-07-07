@@ -4,8 +4,8 @@ import (
 	"io"
 	"os"
 
-	"nod/adapters"
-	"nod/governor"
+	"nodora.org/nod/adapters"
+	"nodora.org/nod/governor"
 
 	"nodora.org/nodora/pkg/core"
 )

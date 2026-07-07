@@ -4,7 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"nod/governor"
+	"nodora.org/nod/governor"
 )
 
 func buildLayers(c common, localDir string) []governor.Layer {

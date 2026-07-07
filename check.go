@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"nod/governor"
+	"nodora.org/nod/governor"
 )
 
 func runCheck(dir, localDir string) error {

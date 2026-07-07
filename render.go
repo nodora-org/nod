@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"nod/governor"
+	"nodora.org/nod/governor"
 )
 
 const provFormat = "%-16s %-14s %-8s %-32s %s\n"
