@@ -121,7 +121,7 @@ nod check
 tool call as JSON on stdin before running it, and nod prints a decision:
 
 ```sh
-echo '{"tool_name":"Bash","tool_input":{"command":"rm -rf build/"}}' | nod hook
+echo '{"tool_name":"Bash","tool_input":{"command":"rm -rf build/"}}' | nod hook --adapter claude
 # {"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny",
 #   "permissionDecisionReason":"danger.ruleset:BlockRmRf: recursive force remove"}}
 ```
@@ -147,7 +147,7 @@ governed:
         "hooks": [
           {
             "type": "command",
-            "command": "nod hook"
+            "command": "nod hook --adapter claude"
           }
         ]
       }
