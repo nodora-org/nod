@@ -8,7 +8,7 @@ rule ForcePush {
     git_push = strings::contains(cmd, "git push")
     force    = strings::contains(cmd, "-f")
 
-    emit Ask("force push rewrites history") when is_bash && git_push && force_push
+    emit Ask("force push rewrites history") when is_bash && git_push && force
 }
 
 rule CurlPipe {
